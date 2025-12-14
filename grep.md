@@ -1,4 +1,7 @@
-**CHEATSHEET TOOLS GREP**
+
+🎯 16. SUPER CHEAT SHEET KHIDIR!
+￼
+bash
 # BASIC SEARCH
 grep "pattern" file.txt              # Simple search
 grep -i "pattern" file.txt           # Case-insensitive
