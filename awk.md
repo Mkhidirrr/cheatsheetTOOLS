@@ -1,23 +1,5 @@
-difying fields doesn't auto-update $0
-awk '{ $1 = "NEW"; print }' file.txt  # Recalculates $0
 
-# ✅ EXPLICIT: Force recalculation
-awk '{ $1 = "NEW"; $0 = $0; print }' file.txt
-```
-
-### **Mistake 4: Integer Division**
-
-```bash
-# ❌ WRONG: Integer division
-awk '{ print 5/2 }'  # Output: 2.5 (actually works in awk!)
-
-# But be careful:
-awk '{ print int(5/2) }'  # Output: 2
-```
-
----
-
-## 🎯 **16. ULTIMATE CHEAT SHEET KHIDIR!**
+## 🎯 **16. ULTIMATE CHEAT SHEET AWK**
 
 ```bash
 # BASIC SYNTAX
@@ -88,71 +70,4 @@ awk '{ count[$2]++ } END { for (cat in count) print cat, count[cat] }' data.txt
 # Generate SQL
 awk -F',' '{ print "INSERT INTO users VALUES (" $1 ", '\''" $2 "'\'');" }' data.csv
 ```
-
----
-
-## 📝 **17. LATIHAN PRAKTIS**
-
-### **Exercise 1: Sales Report**
-
-```bash
-# File: sales.csv (Product,Quantity,Price)
-# Task: Calculate total revenue per product
-
-# Solution:
-awk -F',' 'NR > 1 { revenue[$1] += $2 * $3 } 
-           END { for (product in revenue) 
-                   printf "%s: $%.2f\n", product, revenue[product] }' sales.csv
-```
-
-### **Exercise 2: Log Analysis**
-
-```bash
-# File: access.log
-# Task: Find top 5 IPs with most 404 errors
-
-# Solution:
-awk '$9 == 404 { print $1 }' access.log | \
-  sort | uniq -c | sort -rn | head -5
-```
-
-### **Exercise 3: System Resource**
-
-```bash
-# Task: Find processes using more than 5% memory
-
-# Solution:
-ps aux | awk 'NR > 1 && $4 > 5 { printf "%-20s %5.1f%%\n", $11, $4 }'
-```
-
----
-
-## ✅ **KESIMPULAN ULTIMATE KHIDIR!**
-
-**AWK = Programmable Text Processing!**
-
-**Core Concepts:**
-```
-$1, $2, $3  → Columns
-NR          → Line number  
-NF          → Field count
-BEGIN/END   → Before/After processing
-```
-
-**Most Common Pattern (90%):**
-```bash
-awk -F'delimiter' 'condition { action }' file.txt
-```
-
-**Top 10 Use Cases:**
-1. ✅ Extract columns: `awk '{ print $1, $3 }'`
-2. ✅ Sum/Average: `awk '{ sum += $2 } END { print sum }'`
-3. ✅ Filter rows: `awk '$2 > 100'`
-4. ✅ Count occurrences: `awk '{ count[$1]++ } END { ... }'`
-5. ✅ Format output: `awk '{ printf "%-10s %5d\n", $1, $2 }'`
-6. ✅ Log analysis: `awk '{ print $1 }' | sort | uniq -c`
-7. ✅ CSV processing: `awk -F',' '{ print $1 }'`
-8. ✅ Generate reports with BEGIN/END
-9. ✅ Data validation
-10. ✅ Complex calculations
 
