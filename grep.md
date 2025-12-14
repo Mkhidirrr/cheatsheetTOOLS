@@ -1,7 +1,6 @@
+## 🎯 **16. SUPER CHEAT SHEET**
 
-🎯 16. SUPER CHEAT SHEET KHIDIR!
-￼
-bash
+```bash
 # BASIC SEARCH
 grep "pattern" file.txt              # Simple search
 grep -i "pattern" file.txt           # Case-insensitive
@@ -54,3 +53,5 @@ grep -v "^#" config.conf | grep -v "^$"
 if grep -q "pattern" file.txt; then
   echo "Found"
 fi
+```
+
